@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Workout Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Weekly Workout Planner</h1>
+            <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+        </div>
+    </header>
+    <main>
+        <!-- Landing Page -->
+        <section id="landing-page" class="page active">
+            <h2>Select a Day to View Your Workout Plan</h2>
+            <div class="day-buttons">
+                <button class="day-btn" data-day="Monday">Monday</button>
+                <button class="day-btn" data-day="Tuesday">Tuesday</button>
+                <button class="day-btn" data-day="Wednesday">Wednesday</button>
+                <button class="day-btn" data-day="Thursday">Thursday</button>
+                <button class="day-btn" data-day="Friday">Friday</button>
+                <button class="day-btn" data-day="Saturday">Saturday</button>
+                <button class="day-btn" data-day="Sunday">Sunday</button>
+            </div>
+        </section>
+
+        <!-- Detailed View -->
+        <section id="detail-page" class="page">
+            <div class="detail-header">
+                <button id="back-btn">← Back to Days</button>
+                <h2 id="day-title"></h2>
+            </div>
+            <div id="workout-details">
+                <div id="exercises-container">
+                    <h3>Gym Exercises</h3>
+                    <button class="add-btn" id="add-exercise-btn">➕ Add Exercise</button>
+                    <div id="exercise-form" style="display:none;">
+                        <form class="inline-form">
+                            <label for="exercise-time">Time:</label>
+                            <input type="text" id="exercise-time" placeholder="e.g., Morning">
+                            <label for="exercise-name">Exercise:</label>
+                            <input type="text" id="exercise-name" placeholder="e.g., Push-Ups" required>
+                            <label for="exercise-sets">Sets × Reps:</label>
+                            <input type="text" id="exercise-sets" placeholder="e.g., 3×12">
+                            <button type="submit">Add</button>
+                            <button type="button" class="cancel-btn">Cancel</button>
+                        </form>
+                    </div>
+                    <div id="progress-tracker" class="progress-tracker">
+                        <h4>Progress Tracker</h4>
+                        <div class="progress-stats">
+                            <span id="completed-count">0</span>/<span id="total-count">0</span> Completed
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div id="workout-exercises"></div>
+                </div>
+                <div id="meals-container">
+                    <h3>Meals</h3>
+                    <button class="add-btn" id="add-meal-btn">➕ Add Meal</button>
+                    <div id="meal-form" style="display:none;">
+                        <form class="inline-form">
+                            <label for="meal-time">Time:</label>
+                            <input type="text" id="meal-time" placeholder="e.g., Lunch">
+                            <label for="meal-name">Meal:</label>
+                            <input type="text" id="meal-name" placeholder="e.g., 2 eggs + 1 roti" required>
+                            <button type="submit">Add</button>
+                            <button type="button" class="cancel-btn">Cancel</button>
+                        </form>
+                    </div>
+                    <div id="workout-meals"></div>
+                </div>
+            </div>
+
+            <section id="form-section" style="display: none;">
+                <h3 id="form-title">Add/Edit Workout Entry</h3>
+                <form id="workout-form">
+                    <label for="day-select">Day:</label>
+                    <select id="day-select">
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                    <label for="time-input">Time:</label>
+                    <input type="text" id="time-input" placeholder="e.g., Morning">
+                    <label for="exercise-input">Exercise:</label>
+                    <input type="text" id="exercise-input" placeholder="e.g., Push-Ups">
+                    <label for="sets-reps-input">Sets × Reps:</label>
+                    <input type="text" id="sets-reps-input" placeholder="e.g., 3×12">
+                    <label for="meals-input">Meals:</label>
+                    <input type="text" id="meals-input" placeholder="e.g., 2 eggs + 1 roti">
+                    <button type="submit" id="add-btn">Add</button>
+                    <button type="button" id="edit-btn" style="display: none;">Update</button>
+                    <button type="button" id="delete-btn" style="display: none;">Delete</button>
+                    <button type="button" id="cancel-btn">Cancel</button>
+                </form>
+            </section>
+
+            <section id="export-section">
+                <button id="export-pdf">Export as PDF</button>
+            </section>
+        </section>
+    </main>
+    <footer style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1); color: #666; font-size: 0.9em; margin-top: 40px;">
+        <p>App made by Asfar Hossain Sitab</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
